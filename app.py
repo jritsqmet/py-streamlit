@@ -1,12 +1,16 @@
 import streamlit as st
 import pandas as pd
 from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+
 
 # Cargar el conjunto de datos Iris
 iris = load_iris()
 iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
 iris_df['target'] = iris.target
 class_names = iris.target_names
+feature_names = iris.feature_names
+
 
 # Configuración de la aplicación
 st.title("Aplicación de Streamlit para Visualizar Datos")
@@ -28,10 +32,12 @@ st.bar_chart(selected_data[iris.feature_names])
 
 # Puedes agregar más visualizaciones según tus necesidades
 
-# Mapa de calor de correlación
-st.subheader("Mapa de Calor de Correlación")
-st.heatmap(selected_data[iris.feature_names].corr())
+st.subheader("Visualización de Datos")
 
-# Puedes agregar más visualizaciones según tus necesidades
-
-# Fin de la aplicación
+# Gráfico de barras
+fig, ax = plt.subplots()
+selected_data[iris.feature_names].mean().plot(kind='bar', ax=ax)
+ax.set_title(f"Promedio de Características para la especie {selected_class}")
+ax.set_ylabel("Promedio")
+ax.set_xlabel("Características")
+st.pyplot(fig)
