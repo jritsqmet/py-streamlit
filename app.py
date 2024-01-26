@@ -4,7 +4,7 @@ from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt
 
 
-# Cargar el conjunto de datos Iris
+
 iris = load_iris()
 iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
 iris_df['target'] = iris.target
