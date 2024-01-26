@@ -1,5 +1,6 @@
 @echo off
 
+venv\Scripts\activate
 :: Instalar las dependencias necesarias
 pip install -r requirements.txt
 
