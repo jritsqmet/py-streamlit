@@ -1,5 +1,6 @@
 @echo off
 
+py -m venv venv
 venv\Scripts\activate
 :: Instalar las dependencias necesarias
 pip install -r requirements.txt
